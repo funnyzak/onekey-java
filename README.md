@@ -5,7 +5,7 @@ SpringBoot项目开发脚手架，基于JDK 1.8。使用Maven进行包管理。
 
 项目目标是要达到开箱即用的体验，可以快速上手开始一个项目专注业务实现。
 
-项目基于前后端分离。前端管理配套项目可从 **[OneKey-Admin](https://github.com/funnyzak/onekey-vue-admin)** 获得，已开源。
+项目基于前后端分离。前端管理配套项目可从 **[OneKey-Vue-Admin](https://github.com/funnyzak/onekey-vue-admin)** 获得，已开源。
 
 
 
