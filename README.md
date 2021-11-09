@@ -17,7 +17,7 @@ SpringBoot项目开发脚手架，基于JDK 1.8。使用Maven进行包管理。
 
 演示地址： [oconsole.niuqi.cc](http://oconsole.niuqi.cc)
 
----
+
 
 ## 构建
 
@@ -41,8 +41,6 @@ Lombok 相关文档 [点这里](https://projectlombok.org/features/all) 。
 
 - `java -jar jar.name.jar`即可。
 
----
-
 
 ## 功能
 
@@ -58,7 +56,6 @@ Lombok 相关文档 [点这里](https://projectlombok.org/features/all) 。
 - 第三方集成：阿里云OSS、短信；腾讯云COS、短信、邮件、验证码；GeoIP
 - 等等...
 
----
 
 ## 模块
 
@@ -78,13 +75,12 @@ Lombok 相关文档 [点这里](https://projectlombok.org/features/all) 。
 
 Web前端App服务。
 
----
 
 ## 赞赏
 
 ![赞赏](./_docs/assets/img/coffee.png)
 
----
+
 
 ## Author
 
