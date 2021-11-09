@@ -1,0 +1,309 @@
+#actuator 配置
+management:
+  endpoints:
+    web:
+      base-path: /monitor
+      exposure:
+        include: [ "*" ]
+#LOG 配置文件
+logging:
+  config: classpath:config/logback.xml
+
+#nutz-dao
+nutz:
+  dao:
+    runtime:
+      add-column: true
+      basepackage:
+        - com.github.funnyzak.bean
+      check-index: true
+      create: true
+      delete-column: true
+      foce-create: false
+      migration: true
+    sqlmanager:
+      paths:
+        - sqls
+  json:
+    enabled: true
+    mode: compact
+
+# spring默认配置
+spring:
+  profiles:
+    active: dev
+
+---
+# spring 开发环境
+
+# GeoIP
+geo-ip:
+  database: /DB/GeoLite2/GeoLite2-City_20200421/GeoLite2-City.mmdb # geo db path
+  cache: true # is use cache
+
+# 极速API
+ji-su-api:
+  sms:
+    app-key: c9b5d133cb1
+    end-point: https://api.jisuapi.com/sms
+    templates:
+      - name: 登陆验证
+        sign: funnyzak # 短信签名
+        use: LOGIN_VERIFY
+        tpl-id: 000
+        tpl-content: $$为您的验证码，请于$$分钟内填写，如非本人操作，请忽略本短信。
+      - name: 注册验证
+        sign: funnyzak
+        use: REGISTER_VERIFY
+        tpl-id: 000
+        tpl-content: 验证码：$$，如非本人操作，请忽略本短信【funnyzak】
+      - name: 通用验证
+        sign: funnyzak
+        use: COMMON_VERIFY
+        tpl-id: 000
+        tpl-content: $$为您的验证码，请于$$分钟内填写，如非本人操作，请忽略本短信。【funnyzak】
+
+# NGROK
+#ngrok:
+#  token: r95ncnk954jjiroko6ktkrsurq
+#  port: 8381
+
+# 七牛云
+qiniu:
+  access-key: de6g345ygd6w90chDRckb5
+  secret-key: Aqpbdsfs4GGBYWoZTgU9g4btu
+  bucket: sky
+  domain: http://test.ipotato.cc/
+
+# 微信配置
+wx:
+  miniapp: # 如无，请不要配置
+    configs:
+      - appId: wx84b2756d4
+        secret: 31757e3e7f562fabb1278
+        token: 7rvlf7fk95xhwdv6nmzq
+        aesKey: rLucJGsF1YkmWaPAnYC22sOxQT5nu
+  mp: # 如无，请不要配置
+    configs:
+      - appId: wx8384ed56d4
+        secret: 6uVEsBVuAQ
+        token: 7rf7ft56wz5pk3pxhwdv6nmzq
+        aesKey: rLJpsF1YkmWaPAnYC22sOxQT5nu
+
+# 腾讯云COS
+ten-cloud-cos:
+  secret-id: AKIGCqEKBzhDSVLuF
+  secret-key: 7y2i8n8D1avzoOim
+  region: ap-beijing
+  bucket: ar-130437
+  prefix-key: ktr
+  domain: https://arcdn.niuqi.cc
+
+# 腾讯云ses
+ten-cloud-ses:
+  secret-id: AKID2pBDSVLuF
+  secret-key: 2i8I8D1avzoOim
+  endpoint: ses.tencentcloudapi.com
+  region: ap-hongkong
+  from-email-address: funnyzak <noreplay@qnotice.niuqi.cc>
+  replay-to-address: support@niuqi.cc # 回复地址
+  templates:
+    - name: 注册成功通知 # 选填，备注
+      use: REGISTER_SUCCESS_NOTICE # 必填
+      subject: 您已经成功注册ABC账号 # 默认标题
+      tpl-id: 15395
+      tpl-name: 您已经自动注册niuqi.cc # 选填，备注作用。
+      tpl-content: 尊敬的$$，您已经自动注册niuqi.cc。 # 选填，备注作用。
+      from-email-address: funnyzak <noreplay@qnotice.niuqi.cc> # 选填，优先级高于默认
+      replay-to-address:  support@niuqi.cc # 选填，优先级高于默认
+
+# 腾讯云sms
+ten-cloud-sms:
+  secret-id: AKID2pmoZ3GCqEKBzhDSVLuF
+  secret-key: 7yZtdpmTu62i8IBn8D1avzoOim
+  endpoint: sms.tencentcloudapi.com
+  sdk-app-id: 1520052
+  sign: funnyzak科技
+  templates:
+    - name: 登陆验证
+      sign: funnyzak # 短信签名
+      use: LOGIN_VERIFY
+      tpl-id: 312479
+      tpl-content: $$为您的登录验证码，请于$$分钟内填写，如非本人操作，请忽略本短信。
+    - name: 注册验证
+      sign: funnyzak
+      use: REGISTER_VERIFY
+      tpl-id: 97397
+      tpl-content: 您正在申请手机注册，验证码为：$$，$$分钟内有效！
+    - name: 通用验证
+      sign: funnyzak
+      use: COMMON_VERIFY
+      tpl-id: 97466
+      tpl-content: $$为您的验证码，请于$$分钟内填写，如非本人操作，请忽略本短信。
+
+# 腾讯云captcha
+ten-cloud-captcha:
+  secret-id: AKID2pMccx4uTmoZ3GCqEKBzhDSVLuF
+  secret-key: 7yZtvRAdpmTu62i8IBn8D1avzoOim
+  endpoint: captcha.tencentcloudapi.com
+  sdk-app-id: 2017325
+  sdk-app-secret: 0Jq4NKKq8M2TZDGC924g**
+
+# 阿里云 OSS
+ali-cloud-oss:
+  access-key-id: LTAI5tNzR2MgrS8yZTS
+  access-key-secret: g5O8vsL8pJrjxDAZFCAf5MM3hhC
+  end-point: oss-cn-beijing.aliyuncs.com
+  bucket-name: kar
+  prefix-key: kar
+  domain: https://arcdn.niuqi.cc
+
+
+ali-cloud-sms:
+  access-key-id: LTAI5tBgfknJfKpbME
+  access-key-secret: eBm9LP9CZ7LevPySoMAZwqvJM9G
+  endpoint: dysmsapi.aliyuncs.com
+  sign: funnyzak
+  templates:
+    - name: 登陆验证
+      sign: funnyzak # 短信签名
+      use: LOGIN_VERIFY
+      tpl-id: SMS_220041
+      tpl-content: 验证码为：$$，您正在登录，若非本人操作，请勿泄露。
+    - name: 注册验证
+      sign: funnyzak
+      use: REGISTER_VERIFY
+      tpl-id: SMS_495021
+      tpl-content: 您的注册码：$$，如非本人操作，请忽略本短信！
+    - name: 通用验证
+      sign: funnyzak
+      use: COMMON_VERIFY
+      tpl-id: SMS_2465289
+      tpl-content: 您的验证码：$$，如非本人操作，请忽略本短信！
+
+# 本地文件上传配置
+file-upload:
+  cloud: cos #不留空则填写使用的云存储服务名称
+  virtualHost: http://localhost:9721 # 映射虚拟Host，本地存储的文件对象生成的URL地址所包含的前置URL，如果使用绝对地址请设置此为空
+  virtualPath: /data/attachment # 程序映射 localSavePath 的绝对虚拟路径
+  localSavePath: /Users/potato/WORK/Project/Collection-System/tempdir/upload  # 文件上传路径. 路径格式： win> /E:/var    linux> /var
+  limitImageType: png,jpg,jpeg,bmp,gif # 限制图片文件类型
+  limitOtherType: mp4,mp3,pdf,xls,xlsx,doc,docx,ppt,pptx # 限制其他文件类型
+  limitOtherSize: 2097150 # 限制其他文件大小，单位Byte
+  limitImageSize: 2097150 # 图片最大上传大小，单位Byte
+  thumbImage: true # 是否生成缩率图
+  imageThumbSize: 128,256 # 生成缩略图的几个尺寸
+
+# 业务系统配置
+biz-system:
+  # 公共配置
+  general:
+    image-preview-max-size: 314571000 #  300MB 可预览图片的最大尺寸的限制 单位byte
+  # 系统防御
+  defend:
+    same-pm-resend-interval: 60 # 同一消息重发消息需要等待多长时间
+    send-sms-limit-count-same-receive-one-day: 20 # 同一接受者一天最大发送短信量
+    send-sms-limit-count-same-ip-one-day: 50 # 同一IP一天最大发送数量
+  # 开放平台运行配置
+  open:
+    enable: true # 是否开放
+    timestamp-expired-time: 3660000 # 时间戳过期时间
+
+# server 默认配置
+server:
+  port: 2080
+  tomcat:
+    basedir: /Users/potato/WORK/Cache/Tomcat/c2 # Tomcat 基础文件夹
+    max-connections: 10000
+    uri-encoding: utf-8
+
+spring:
+  profiles: dev
+  application:
+    name: 测试环境
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file://${file-upload.localSavePath}
+  thymeleaf:
+    mode: HTML
+    cache: false
+    prefix: classpath:/templates/
+    encoding: UTF-8
+    suffix: .html
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  # REDIS
+  redis:
+    host: localhost
+    port: 7005
+    ssl: false
+    timeout: 3000ms
+    password: helloworld
+    database: 1
+    lettuce:
+      pool:
+        max-active: 12
+        max-idle: 7
+        max-wait: 1000ms
+
+  # Mail
+  mail:
+    host: smtp.exmail.qq.com
+    port: 465
+    username: noreplay@abc.com
+    password: 1234567
+    default-encoding: UTF-8
+    protocol: smtps # 协议
+    properties:
+      mail:
+        smtp:
+          auth: true # 使用
+          starttls: # 使用 SSL 安全协议，必须配置如下
+            enable: true
+            required: true
+    fromMail:
+      addr: noreplay@niuqi.cc  # 发件人
+    receptionMail:
+      addr: 123456@qq.com  # 接收人
+
+  #db
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:7001/potato_onekey?useUnicode=true&characterEncoding=utf8&useSSL=false
+      username: root
+      password: helloworld
+      driver-class-name: com.mysql.jdbc.Driver
+      #      filters: stat,wall,log4j
+      initialSize: 10
+      minIdle: 1
+      maxActive: 50
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: true
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: /druid/*,*.js,*.gif,*.jpg,*.png,*.css,*.ico
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+#        login-username: root
+#        login-password: 123456
+#        resetEnable: true
+
+---
+server:
+  port: 8082
+spring:
+  profiles: prod
+  application:
+    name: 生产环境
+
