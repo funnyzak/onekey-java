@@ -126,7 +126,7 @@
                         -Xms512m
                         -Xmx20480m
                     </jvmArguments>
-                    <mainClass>com.github.funnyzak.web.WebApplication</mainClass>
+                    <mainClass>com.github.funnyzak.onekey.web.WebApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

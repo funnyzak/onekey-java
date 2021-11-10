@@ -15,7 +15,7 @@ nutz:
     runtime:
       add-column: true
       basepackage:
-        - com.github.funnyzak.bean
+        - com.github.funnyzak.onekey.bean
       check-index: true
       create: true
       delete-column: true

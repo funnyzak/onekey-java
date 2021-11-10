@@ -190,7 +190,7 @@
     -->
 
     <springProfile name="dev">
-        <logger name="com.github.funnyzak" level="debug"/><!-- 修改此处扫描包名 -->
+        <logger name="com.github.funnyzak.onekey" level="debug"/><!-- 修改此处扫描包名 -->
     </springProfile>
 
     <root level="INFO">
