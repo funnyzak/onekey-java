@@ -27,7 +27,7 @@ Lombok 相关文档 [点这里](https://projectlombok.org/features/all) 。
 
 构建步骤：
 
-1. 拉取代码：`git clone git@github.com:funnyzak/onekey-java.git && cd onekey-java`
+1. 拉取代码：`git clone git@github.com:funnyzak/onekey-java.git -b master && cd onekey-java`
 2. Maven构建： `mvn install && mvn idea:idea`
 3. 用idea打开，并选择父工程右键添加maven支持
 4. 在 `onekey-web => resources` 配置 **application.yaml** 数据库等相关信息。
