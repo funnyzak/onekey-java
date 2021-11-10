@@ -44,7 +44,7 @@ public class WebLogAspect {
     /**
      * 定义一个切点
      */
-    @Pointcut("execution(* org.skyf.potato.web.controller..*.*(..))")
+    @Pointcut("execution(* com.github.funnyzak.web.controller..*.*(..))")
     public void webLog() {
     }
 

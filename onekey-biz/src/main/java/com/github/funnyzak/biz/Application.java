@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author Potato (silenceace@gmail.com)
  * @date 2019-08-12 17:16
  */
-@SpringBootApplication(scanBasePackages = "org.skyf.potato")
+@SpringBootApplication(scanBasePackages = "com.github.funnyzak")
 @EnableAsync
 @EnableTransactionManagement
 public class Application {

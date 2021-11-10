@@ -43,7 +43,7 @@
     </root>
     <!-- 指定项目中某个包，当有日志操作行为时的日志记录级别 -->
     <!-- 级别依次为【从高到低】：FATAL > ERROR > WARN > INFO > DEBUG > TRACE  -->
-    <logger name="org.skyf.potato" level="DEBUG">
+    <logger name="com.github.funnyzak" level="DEBUG">
         <appender-ref ref="FILE"/>
     </logger>
 </configuration>

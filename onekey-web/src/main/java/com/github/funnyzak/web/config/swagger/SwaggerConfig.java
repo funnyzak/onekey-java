@@ -24,7 +24,7 @@ public class SwaggerConfig {
     public Docket Api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("org.skyf.potato"))
+                .apis(RequestHandlerSelectors.basePackage("com.github.funnyzak"))
                 .paths(regex("/.*"))
                 .build()
                 .apiInfo(metaData());

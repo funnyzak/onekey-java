@@ -29,7 +29,7 @@ public class ReflectionUtils {
      * @return
      */
     public static Reflections reflections(String... basePackages) {
-        return new Reflections(new ConfigurationBuilder().forPackages(basePackages == null ? new String[]{"org.skyf.potato"} : basePackages).addScanners(new SubTypesScanner()).addScanners(new FieldAnnotationsScanner()));
+        return new Reflections(new ConfigurationBuilder().forPackages(basePackages == null ? new String[]{"com.github.funnyzak"} : basePackages).addScanners(new SubTypesScanner()).addScanners(new FieldAnnotationsScanner()));
     }
 
     private static Reflections reflections() {

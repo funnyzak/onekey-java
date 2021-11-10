@@ -39,7 +39,7 @@ Lombok 相关文档 [点这里](https://projectlombok.org/features/all) 。
 
 运行：
 
-- `java -jar jar.name.jar`即可。
+- `java -Dspring.config.location=application.yaml -Dspring.profiles.active=dev -jar jar.name.jar`即可。
 
 
 ## 功能

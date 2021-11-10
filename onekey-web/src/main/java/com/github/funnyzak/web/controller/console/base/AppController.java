@@ -51,7 +51,7 @@ public class AppController extends ConsoleBaseController {
     @ApiOperation("获取枚举信息")
     public Result enumInfo(@PathVariable("enum") @ApiParam("枚举定义名称") String enumName
             , @RequestParam(value = "type", defaultValue = "1") @ApiParam("类型") Integer type) {
-        Class<? extends Enum> enumType = ReflectionUtils.matchEnum(enumName, "org.skyf.potato");
+        Class<? extends Enum> enumType = ReflectionUtils.matchEnum(enumName, "com.github.funnyzak");
         return Result.success().addData(JsonConstants.INFO_NAME, type == 1 ? PUtils.enumsInfoList(enumType) : type == 2 ? PUtils.enumsAllList(enumType) : PUtils.enumsAllList(enumType).stream().map(v -> v.toString()).collect(Collectors.joining(",")));
     }
 
@@ -60,7 +60,7 @@ public class AppController extends ConsoleBaseController {
     public Result allEnum() {
         return Result.success().addData(JsonConstants.LIST_NAME
                 , ReflectionUtils
-                        .allEnum("org.skyf.potato")
+                        .allEnum("com.github.funnyzak")
                         .stream().map(v -> v.getName()).collect(Collectors.toList()));
     }
 
@@ -69,7 +69,7 @@ public class AppController extends ConsoleBaseController {
     public Result allTableClass() {
         return Result.success().addData(JsonConstants.LIST_NAME
                 , ReflectionUtils
-                        .typesAnnotatedWith(Table.class, "org.skyf.potato.bean")
+                        .typesAnnotatedWith(Table.class, "com.github.funnyzak.bean")
                         .stream().map(v -> v.getName()).collect(Collectors.toList()));
     }
 

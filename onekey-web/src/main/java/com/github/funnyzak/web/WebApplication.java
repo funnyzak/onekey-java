@@ -21,8 +21,8 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@SpringBootApplication(scanBasePackages = "org.skyf.potato")
-//@SpringBootApplication(exclude = {RedisAutoConfiguration.class},scanBasePackages = "org.skyf.potato")
+@SpringBootApplication(scanBasePackages = "com.github.funnyzak")
+//@SpringBootApplication(exclude = {RedisAutoConfiguration.class},scanBasePackages = "com.github.funnyzak")
 @EnableAsync
 @EnableTransactionManagement
 public class WebApplication {
@@ -44,8 +44,8 @@ public class WebApplication {
                 if (context.getParent() == null) {
                     log.debug("application starter...");
                     // 确保表结构正确
-                    Daos.createTablesInPackage(dao, "org.skyf.potato.bean", false);
-                    Daos.migration(dao, "org.skyf.potato.bean", true, true);
+                    Daos.createTablesInPackage(dao, "com.github.funnyzak.bean", false);
+                    Daos.migration(dao, "com.github.funnyzak.bean", true, true);
                     initAcl(context);
                 }
             }
