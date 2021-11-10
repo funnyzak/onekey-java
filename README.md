@@ -30,8 +30,8 @@ Lombok 相关文档 [点这里](https://projectlombok.org/features/all) 。
 1. 拉取代码：`git clone git@github.com:funnyzak/onekey-java.git -b master && cd onekey-java`
 2. Maven构建： `mvn install && mvn idea:idea`
 3. 用idea打开，并选择父工程右键添加maven支持
-4. 在 `onekey-web => resources` 配置 **application.yaml** 数据库等相关信息。
-5. 在`onekey-web`模块下，运行入口类启动Web项目。
+4. 在 `onekey-web => resources` 配置 **application-*.yaml** 数据库等相关信息。
+5. 在 `onekey-web` 模块下，运行入口类启动Web项目。
 
 打包：
 
@@ -39,7 +39,7 @@ Lombok 相关文档 [点这里](https://projectlombok.org/features/all) 。
 
 运行：
 
-- `java -Dspring.config.location=application.yaml -Dspring.profiles.active=dev -jar jar.name.jar`即可。
+- `java -Dspring.config.location=onekey-web/src/main/resources/application-dev.yaml -Dspring.profiles.active=dev -jar jar.name.jar`即可。
 
 
 ## 功能
