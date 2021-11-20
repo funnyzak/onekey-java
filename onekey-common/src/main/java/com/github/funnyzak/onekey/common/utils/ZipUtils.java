@@ -8,6 +8,7 @@ import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.nutz.lang.Lang;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +18,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.zip.GZIPOutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -141,6 +143,7 @@ public class ZipUtils {
                     File directory = new File(outputDir, entry.getName());
                     directory.mkdirs();
                 } else {
+                    checkParentDirectoryExist(outputDir, entry.getName());
                     OutputStream os = null;
                     try {
                         os = new BufferedOutputStream(new FileOutputStream(new File(outputDir, entry.getName())), BUFFER_SIZE);
@@ -158,6 +161,31 @@ public class ZipUtils {
         }
 
         return fileNames;
+    }
+
+    /**
+     * 检查当前路径中，最后一个文件之前的父级目录是否存在
+     *
+     * @param outputDir 输出的父路径
+     * @param path      当前生成的文件路径
+     */
+    private static void checkParentDirectoryExist(String outputDir, String path) {
+        String[] fileNames = path.split(Lang.isWin() ? "/" : File.separator);
+        if (fileNames.length <= 1) {
+            return;
+        }
+        StringBuffer filePath = new StringBuffer(outputDir);
+        for (int index = 0; index < fileNames.length - 1; index++) {
+            if (index != 0) {
+                filePath.append(Lang.isWin() ? Matcher.quoteReplacement(File.separator) : File.separator);
+            }
+            filePath.append(fileNames[index]);
+            File directory = new File(filePath.toString());
+            if (!directory.exists()) {
+                directory.mkdir();
+            }
+        }
+
     }
 
     /**
