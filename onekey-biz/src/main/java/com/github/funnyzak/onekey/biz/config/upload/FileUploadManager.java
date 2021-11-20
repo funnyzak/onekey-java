@@ -146,8 +146,8 @@ public class FileUploadManager {
                 return null;
             }
 
-            String realPrefixPath = Lang.isWin() ? fileUploadProperties.getLocalSavePath().substring(1).replaceAll("/", "\\\\") : fileUploadProperties.getLocalSavePath();
-            String unixPath = savePath.replaceAll(realPrefixPath, "").replaceAll("\\\\", "/");
+            String realPrefixPath = Lang.isWin() ? fileUploadProperties.getLocalSavePath().substring(1).replace("/", "\\") : fileUploadProperties.getLocalSavePath();
+            String unixPath = savePath.replaceAll(realPrefixPath, "").replace("\\", "/");
             String fileVirtualPath = fileUploadProperties.getVirtualPath() + unixPath;
             fileVirtualPath = fileVirtualPath.substring(0, fileVirtualPath.lastIndexOf("/") + 1);
 
