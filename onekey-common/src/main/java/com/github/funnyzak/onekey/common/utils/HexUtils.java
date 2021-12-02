@@ -16,7 +16,7 @@ public class HexUtils {
      * @param hexString
      * @return
      */
-    public static String hexString2binaryString(String hexString) {
+    public static String binaryFromHex(String hexString) {
         if (hexString == null || hexString.length() % 2 != 0)
             return null;
         String bString = "", tmp;
@@ -24,7 +24,7 @@ public class HexUtils {
             tmp = "0000" + Integer.toBinaryString(Integer.parseInt(hexString.substring(i, i + 1), 16));
             bString += tmp.substring(tmp.length() - 4);
         }
-        return reverseOrder(bString);
+        return bString;
     }
 
     /**
@@ -53,12 +53,12 @@ public class HexUtils {
      * @return
      */
     public static String[] getDate(String data) {
-        String[] datas = data.split(" ");
-        String[] returnDatas = new String[50];
-        for (int i = 0; i < datas.length; i++) {
-            returnDatas[i] = hexString2binaryString(datas[i]);
+        String[] dataArr = data.split(" ");
+        String[] returnDataArr = new String[50];
+        for (int i = 0; i < dataArr.length; i++) {
+            returnDataArr[i] = binaryFromHex(dataArr[i]);
         }
-        return returnDatas;
+        return returnDataArr;
     }
 
     /**
@@ -67,7 +67,7 @@ public class HexUtils {
      * @param hex16
      * @return
      */
-    public static int get10HexBy16Hex(String hex16) {
+    public static int getDecimalFromHex(String hex16) {
         return Integer.parseInt(hex16, 16);
     }
 
@@ -77,7 +77,7 @@ public class HexUtils {
      * @param num
      * @return
      */
-    public static String get16HexBy10Hex(Integer num) {
+    public static String getHexFromDecimal(Integer num) {
         return Integer.toHexString(num);
     }
 
@@ -87,11 +87,11 @@ public class HexUtils {
      * @param nums
      * @return
      */
-    public static List<String> get16HexBy10Hex(List<Integer> nums) {
+    public static List<String> getHexListFromDecimalList(List<Integer> nums) {
         if (nums == null || nums.size() == 0) {
             return null;
         }
-        return nums.stream().map(num -> get16HexBy10Hex(num)).collect(Collectors.toList());
+        return nums.stream().map(num -> getHexFromDecimal(num)).collect(Collectors.toList());
     }
 
 
@@ -101,7 +101,7 @@ public class HexUtils {
      * @param str
      * @return
      */
-    public static List<Integer> get10HexByAscii(String str) {
+    public static List<Integer> getDecimalListFromAscii(String str) {
         List<Integer> hex10 = new ArrayList<>();
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
@@ -110,27 +110,26 @@ public class HexUtils {
         return hex10;
     }
 
-
     /**
      * Ascii转16进制
      *
      * @param str
      * @return
      */
-    public static List<String> get16HexByAscii(String str) {
-        return get16HexBy10Hex(get10HexByAscii(str));
+    public static List<String> getHexFromAscii(String str) {
+        return getHexListFromDecimalList(getDecimalListFromAscii(str));
     }
 
     /**
      * 16进制字符串转Ascii
      *
-     * @param hexs 16进制集合
+     * @param hexList 16进制集合
      * @return
      */
-    public static String getAsciiBy16Hex(List<String> hexs) {
+    public static String getAsciiByHex(List<String> hexList) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < hexs.size(); i++) {
-            sb.append((char) get10HexBy16Hex(hexs.get(i)));
+        for (int i = 0; i < hexList.size(); i++) {
+            sb.append((char) getDecimalFromHex(hexList.get(i)));
         }
         return sb.toString();
     }
@@ -141,7 +140,7 @@ public class HexUtils {
      * @param hexString 16进制字符串，如：414243444546 对应 ABCDEF
      * @return
      */
-    public static String getAsciiBy16HexString(String hexString) {
+    public static String getAsciiFromHexString(String hexString) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < hexString.length() - 1; i += 2) {
             String h = hexString.substring(i, (i + 2));
@@ -157,10 +156,10 @@ public class HexUtils {
      * @param hexBytes 16进制集合
      * @return
      */
-    public static String getAsciiBy16HexList(List<String> hexBytes) {
+    public static String getAsciiFromHexList(List<String> hexBytes) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < hexBytes.size(); i++) {
-            sb.append((char) get10HexBy16Hex(hexBytes.get(i)));
+            sb.append((char) getDecimalFromHex(hexBytes.get(i)));
         }
         return sb.toString();
     }
@@ -168,13 +167,13 @@ public class HexUtils {
     /**
      * 10进制字符串转Ascii
      *
-     * @param hex10Bytes 10进制集合
+     * @param decimalList 10进制集合
      * @return
      */
-    public static String getAsciiBy10Hex(List<Integer> hex10Bytes) {
+    public static String getAsciiFromDecimalList(List<Integer> decimalList) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < hex10Bytes.size(); i++) {
-            sb.append((char) ((int) hex10Bytes.get(i)));
+        for (int i = 0; i < decimalList.size(); i++) {
+            sb.append((char) ((int) decimalList.get(i)));
         }
         return sb.toString();
     }
@@ -191,6 +190,6 @@ public class HexUtils {
 
     public static void main(String[] arg) {
 //        System.out.println(HexUtils.getAsciiBy10Hex(Arrays.asList(65)));
-        System.out.println(HexUtils.get10HexByAscii("ABCDEF").isEmpty());
+        System.out.println(HexUtils.getDecimalListFromAscii("ABCDEF").isEmpty());
     }
 }
