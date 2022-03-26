@@ -1,14 +1,10 @@
 # OneKey-Java [![Release Version](https://img.shields.io/github/release/funnyzak/onekey-java.svg)](https://github.com/funnyzak/onekey-java/releases/latest) [![Latest Release Download](https://img.shields.io/github/downloads/funnyzak/onekey-java/latest/total.svg)](https://github.com/funnyzak/onekey-java/releases/latest) [![Total Download](https://img.shields.io/github/downloads/funnyzak/onekey-java/total.svg)](https://github.com/funnyzak/onekey-java/releases)
 
-
 SpringBoot项目开发脚手架，基于JDK 1.8。使用Maven进行包管理。
 
 项目目标是要达到开箱即用的体验，可以快速上手开始一个项目专注业务实现。
 
 项目基于前后端分离。前端管理配套项目可从 **[OneKey-Vue-Admin](https://github.com/funnyzak/onekey-vue-admin)** 获得，已开源。
-
-
-
 
 主要依赖：
 
@@ -16,8 +12,6 @@ SpringBoot项目开发脚手架，基于JDK 1.8。使用Maven进行包管理。
 - [SpringBoot 2.3](#)
 
 演示地址： [oconsole.niuqi.cc](http://oconsole.niuqi.cc)
-
-
 
 ## 构建
 
@@ -41,7 +35,6 @@ Lombok 相关文档 [点这里](https://projectlombok.org/features/all) 。
 
 - `java -Dspring.config.location=onekey-web/src/main/resources/application-dev.yaml -Dspring.profiles.active=dev -jar jar.name.jar`即可。
 
-
 ## 功能
 
 - 基于角色、用户的权限控制实现。
@@ -55,7 +48,6 @@ Lombok 相关文档 [点这里](https://projectlombok.org/features/all) 。
 - Redis集成。
 - 第三方集成：阿里云OSS、短信；腾讯云COS、短信、邮件、验证码；GeoIP
 - 等等...
-
 
 ## 模块
 
@@ -75,12 +67,9 @@ Lombok 相关文档 [点这里](https://projectlombok.org/features/all) 。
 
 Web前端App服务。
 
-
 ## 赞赏
 
 ![赞赏](./_docs/assets/img/coffee.png)
-
-
 
 ## Author
 
@@ -88,9 +77,6 @@ Web前端App服务。
 |---|
 | [funnyzak](https://yycc.me/) |
 
-
-
 ## License
 
 Apache-2.0 License © 2021 [funnyzak](https://github.com/funnyzak)
-
